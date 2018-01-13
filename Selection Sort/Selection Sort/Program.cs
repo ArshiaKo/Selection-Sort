@@ -5,48 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Selection_Sort
-{
+{ 
     class Program
-    {
+    { 
         static void Main(string[] args)
         {
+           //fix swapping
             List<int> ints = new List<int>();
-            Random rand = new Random();
-            bool random = true;
-            Console.WriteLine("Do you want to type in 10 numbers or random \ntype 10 or random");
-            string choice = Console.ReadLine();
             #region ask for 10 numbers
-            if (choice == "10")
-            {
-                random = false;
-            }
-
-            else if (choice == "random" || choice == "")
-            {
-                random = true;
-            }
-
-            if (random)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    ints.Add(rand.Next(1,101));
-                }
-            }
-
-            if (!random)
-            {
                 Console.WriteLine("Give me 10 numbers");
                 for (int i = 0; i < 10; i++)
                 {
-                    ints.Add(int.Parse(Console.ReadLine()));
-                }
-                
-            }
-            Console.WriteLine("");
-            foreach (int number in ints)
-            {
-                Console.WriteLine(number);
+                    char num = Console.ReadKey().KeyChar;
+                    Console.WriteLine("");
+                    if(num != '1' && num != '2' && num != '3' && num != '4' && num != '5' && num != '6' && num != '7' && num != '8' && num != '9' && num != '0')
+                    {
+                        Console.WriteLine("I eat numbers, not letters");
+                    }
+                ints.Add(int.Parse(num.ToString()));
             }
             #endregion
             #region checking for swap
@@ -61,13 +37,22 @@ namespace Selection_Sort
                         index = j;
                         smallest = ints[j];
                         ints[j] = ints[index];
-                        
-
                     }
                 }
             }
+            print(ints);
             #endregion
             Console.ReadKey();
         }
+        public static void print(List<int> Ints)
+        {
+            Console.WriteLine("");
+            foreach (int number in Ints)
+            {
+                Console.WriteLine(number);
+            }
+        }
+
+
     }
 }
