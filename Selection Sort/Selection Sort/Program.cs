@@ -11,9 +11,9 @@ namespace Selection_Sort
         static void Main(string[] args)
         {
             
-            bool AlexIsUsingThis = false;
+            bool AlexIsUsingThis = true;
             int[] ints = new int[10];
-            Random rand = new Random(1);
+            Random rand = new Random();
             #region ask for 10 numbers
             if (!AlexIsUsingThis)
             {
@@ -45,34 +45,30 @@ namespace Selection_Sort
             }
             #endregion
             #region checking for swap
-            int smallestIndex = 11;
+            int smallestIndex = 0;
             int index = 0;
             
-            for (int slotIndex = 0; slotIndex < ints.Length - 1; slotIndex++)
+            for (int BiggestIndex = 0; BiggestIndex < ints.Length - 1; BiggestIndex++)
             {
-
                 bool swap = false;
 
-                for (int j = slotIndex; j < ints.Length; j++)
+                smallestIndex = BiggestIndex;
+
+                for (int j = BiggestIndex + 1; j < ints.Length; j++)
                 {
-                    if (ints[j] < smallestIndex)
+                    if (ints[j] < ints[smallestIndex])
                     {
                         swap = true;
-
-                        index = j;
-
-                        smallestIndex = ints[j];
-
-                        ints[j] = ints[index];
+                        smallestIndex = j;               
                     }
                 }
 
                 if (swap)
-                {//////////Getting Small; setting to Biggest; but not setting temp to smallest
-                    int temp = ints[slotIndex];
-                    ints[slotIndex] = ints[smallestIndex];
+                {
+                    int temp = ints[BiggestIndex];
+                    ints[BiggestIndex] = ints[smallestIndex];
                     ints[smallestIndex] = temp;
-                }
+                }                
             }
             print(ints);
             #endregion
